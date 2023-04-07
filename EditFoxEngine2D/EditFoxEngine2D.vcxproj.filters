@@ -19,11 +19,14 @@
     <Filter Include="Pliki źródłowe\stl_allocator">
       <UniqueIdentifier>{4a5215f0-1bc5-4c4e-ab6a-846191715908}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki źródłowe\Core">
+      <UniqueIdentifier>{e0639afe-8370-4785-86bc-7402c308e289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Core">
+      <UniqueIdentifier>{f1568322-3e8a-4d60-824b-ec14be645868}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
     <ClInclude Include="Allocator.h">
       <Filter>Pliki nagłówkowe\stl_allocator</Filter>
     </ClInclude>
@@ -64,16 +67,16 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="FiniteStateMachine.h">
-      <Filter>Pliki nagłówkowe</Filter>
+      <Filter>Pliki nagłówkowe\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Pliki nagłówkowe\Core</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Pliki nagłówkowe</Filter>
+      <Filter>Pliki nagłówkowe\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="Allocator.cpp">
       <Filter>Pliki źródłowe\stl_allocator</Filter>
     </ClCompile>
@@ -90,10 +93,13 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="FiniteStateMachine.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki źródłowe\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Pliki źródłowe\Core</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>Pliki źródłowe</Filter>
+      <Filter>Pliki źródłowe\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
