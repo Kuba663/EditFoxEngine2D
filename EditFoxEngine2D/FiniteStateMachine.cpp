@@ -1,10 +1,11 @@
+#include "stdafx.h"
 #include "FiniteStateMachine.h"
 
 FiniteStateMachine::FiniteStateMachine()
 	: currentState(nullptr)
 {
 }
-State& FiniteStateMachine::getState(std::string name)
+State& FiniteStateMachine::getState(xstring name)
 {
 	return *states[name];
 }
@@ -14,7 +15,7 @@ State& FiniteStateMachine::getCurrentState() const
 	return *currentState;
 }
 
-void FiniteStateMachine::setCurrentState(std::string name)
+void FiniteStateMachine::setCurrentState(xstring name)
 {
 	setCurrentState(states[name].get());
 }
