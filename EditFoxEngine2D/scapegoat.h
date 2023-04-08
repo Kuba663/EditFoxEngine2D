@@ -6,24 +6,44 @@
 #include <stl_allocator.h>
 #include <atomic>
 #include <cmath>
-template<typename _Kty, typename _Ty, typename _Comp = std::less<_Kty>, typename _Alloc = stl_allocator<_Ty>>
+#include <limits>
+template<typename _Kty, typename _Ty, typename _Hash = std::hash<_Kty>, typename _Comp = std::less<size_t>, typename _Alloc = stl_allocator<_Ty>>
 class scapegoat
 {
 	struct node {
-		_Kty key;
+		size_t key;
 		_Ty* value;
 		std::atomic<std::shared_ptr<node>> parent, left, right;
-		explicit node() = default;
-		node(_Kty key, _Ty value) {
-			this->key = key;
-			this->value = std::allocator_traits<_Alloc>::allocate(this->allocator, 1);
-			std::allocator_traits<_Alloc>::construct(this->allocator, this->value, std::move(value));
+		scapegoat& tree;
+		explicit node(scapegoat& tree) {
+			this->tree = tree;
+			this->value = nullptr;
 			this->left.store(nullptr);
 			this->right.store(nullptr);
+			this->parent.store(nullptr);
+		};
+		node(scapegoat& tree, _Kty key, _Ty value) {
+			this->tree = tree;
+			this->key = _Hash()(key);
+			this->value = std::allocator_traits<_Alloc>::allocate(this->allocator, 1);
+			std::allocator_traits<_Alloc>::construct(this->allocator, this->value, value);
+			this->left.store(nullptr);
+			this->right.store(nullptr);
+			this->parent.store(nullptr);
 		}
 		~node() {
 			std::allocator_traits<_Alloc>::destroy(this->allocator, this->value);
 			std::allocator_traits<_Alloc>::deallocate(this->allocator, this->value, 1);
+		}
+		node& operator=(node&& n) {
+			if (*this != n) {
+				std::allocator_traits<_Alloc>::destroy(this->allocator, this->value);
+				std::allocator_traits<_Alloc>::construct(this->allocator, this->value, value);
+				this->key = n.key;
+				n.key = std::numeric_limits<size_t>().max();
+				this->tree->remove(std::numeric_limits<size_t>().max());
+			}
+			return *this;
 		}
 		_Alloc allocator;
 	};
@@ -32,7 +52,7 @@ public:
 	virtual ~scapegoat() {};
 	void insert(_Kty key, _Ty value) {
 		std::shared_ptr<node> potentialParent;
-		std::shared_ptr<node> n = std::make_shared<node>(key, value);
+		std::shared_ptr<node> n = std::make_shared<node>(*this ,key, value);
 		if (!this->root.load())
 			{ this->root.store(n);
 			  return; }
