@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <Allocator.h>
 #include <xlist.h>
 #include <xmap.h>
