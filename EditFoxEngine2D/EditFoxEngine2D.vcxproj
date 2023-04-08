@@ -183,26 +183,12 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Allocator.h" />
-    <ClInclude Include="DataTypes.h" />
-    <ClInclude Include="Fault.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="stl_allocator.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="xallocator.h" />
-    <ClInclude Include="xlist.h" />
-    <ClInclude Include="xmap.h" />
-    <ClInclude Include="xqueue.h" />
-    <ClInclude Include="xset.h" />
-    <ClInclude Include="xsstream.h" />
-    <ClInclude Include="xstring.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Allocator.cpp" />
-    <ClCompile Include="Fault.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cxx">
@@ -213,7 +199,6 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
     </ClCompile>
     <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="xallocator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

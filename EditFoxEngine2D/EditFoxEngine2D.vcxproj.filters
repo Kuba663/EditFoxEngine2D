@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Pliki nagłówkowe\stl_allocator">
-      <UniqueIdentifier>{f52f5b5b-015c-48b7-a7fe-b01713655ae4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Pliki źródłowe\stl_allocator">
-      <UniqueIdentifier>{4a5215f0-1bc5-4c4e-ab6a-846191715908}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Pliki źródłowe\Core">
       <UniqueIdentifier>{e0639afe-8370-4785-86bc-7402c308e289}</UniqueIdentifier>
     </Filter>
@@ -27,42 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Allocator.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="DataTypes.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="Fault.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="stl_allocator.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xallocator.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xlist.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xmap.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xqueue.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xset.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xsstream.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="xstring.h">
-      <Filter>Pliki nagłówkowe\stl_allocator</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -77,15 +35,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Allocator.cpp">
-      <Filter>Pliki źródłowe\stl_allocator</Filter>
-    </ClCompile>
-    <ClCompile Include="Fault.cpp">
-      <Filter>Pliki źródłowe\stl_allocator</Filter>
-    </ClCompile>
-    <ClCompile Include="xallocator.cpp">
-      <Filter>Pliki źródłowe\stl_allocator</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
