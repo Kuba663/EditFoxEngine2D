@@ -20,11 +20,11 @@
 /// will occur in the reverse order so xallocInitDestroy is called last. This way,
 /// any static user objects relying on xallocator will be destroyed first before 
 /// xalloc_destroy() is called. 
-class XallocInitDestroy
+class XALLOCATOR_API XallocInitDestroy
 {
 public:
-	XallocInitDestroy();
-	~XallocInitDestroy();
+    XallocInitDestroy();
+    ~XallocInitDestroy();
 private:
 	static INT refCount;
 };
@@ -43,30 +43,30 @@ extern "C" {
 /// Embedded systems that never exit can call xalloc_init() manually at startup
 /// and eliminate XallocInitDestroy usage. When the system is still single threaded at 
 /// startup, the xallocator API does not need mutex protection.
-void xalloc_init();
+void XALLOCATOR_API xalloc_init();
 
 /// This function must be called once when the application exits.  Never call xalloc_destroy() 
 /// manually except if using xallocator in a C-only application. If using xallocator 
 /// exclusively in C files within your application code, you must call this function before 
 /// the program exits. If using C++, ~XallocInitDestroy() must call xalloc_destroy automatically.
 /// Embedded systems that never exit need not call this function at all. 
-void xalloc_destroy();
+void XALLOCATOR_API xalloc_destroy();
 
 /// Allocate a block of memory
 /// @param[in] size - the size of the block to allocate. 
-void *xmalloc(size_t size);
+void XALLOCATOR_API*xmalloc(size_t size);
 
 /// Frees a previously xalloc allocated block
 /// @param[in] ptr - a pointer to a previously allocated memory using xalloc.
-void xfree(void* ptr);
+void XALLOCATOR_API xfree(void* ptr);
 
 /// Reallocates an existing xalloc block to a new size
 /// @param[in] ptr - a pointer to a previously allocated memory using xalloc.
 /// @param[in] size - the size of the new block
-void *xrealloc(void *ptr, size_t size);	
+void XALLOCATOR_API *xrealloc(void *ptr, size_t size);
 
 /// Output allocator statistics to the standard output
-void xalloc_stats();
+void XALLOCATOR_API xalloc_stats();
 
 // Macro to overload new/delete with xalloc/xfree  
 #define XALLOCATOR \
