@@ -183,6 +183,7 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="efeid.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="Game.h" />
@@ -191,6 +192,7 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="efeid.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="Game.cpp" />

@@ -45,6 +45,9 @@
     <ClInclude Include="scapegoat.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="efeid.h">
+      <Filter>Pliki nagłówkowe\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -64,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Pliki źródłowe\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="efeid.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

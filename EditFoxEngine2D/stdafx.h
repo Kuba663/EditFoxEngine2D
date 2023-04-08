@@ -7,3 +7,4 @@
 #include <xset.h>
 #include <xsstream.h>
 #include <xstring.h>
+#include "efeid.h"
