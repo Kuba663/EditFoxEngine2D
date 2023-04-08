@@ -186,6 +186,7 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="scapegoat.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
