@@ -5,10 +5,12 @@
 EditFoxEngine::Game::Game()
 {
 	this->window = new sf::Window();
+	this->gameStateMachine = new FiniteStateMachine();
 }
 
 EditFoxEngine::Game::~Game()
 {
+	delete this->gameStateMachine;
 	delete this->window;
 }
 
@@ -32,6 +34,7 @@ void EditFoxEngine::Game::updateSFMLEvents()
 
 void EditFoxEngine::Game::update()
 {
+	this->gameStateMachine->update();
 	window->display();
 }
 
