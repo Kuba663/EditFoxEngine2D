@@ -19,6 +19,12 @@
     <Filter Include="Pliki nagłówkowe\Core">
       <UniqueIdentifier>{f1568322-3e8a-4d60-824b-ec14be645868}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\ECS">
+      <UniqueIdentifier>{eaa485a0-794e-446d-a212-963ae144d6a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\ECS">
+      <UniqueIdentifier>{91b7b798-237b-4194-a829-04db44a0a1f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -32,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Pliki nagłówkowe\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Pliki nagłówkowe\ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Pliki źródłowe\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Pliki źródłowe\ECS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
