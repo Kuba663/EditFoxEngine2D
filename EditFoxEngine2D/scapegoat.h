@@ -146,7 +146,7 @@ protected:
 		if (!p) 
 			{ result = buildBalancedFromArray(arr, 0, n);
 			  result->parent.store(nullptr); }
-		else if (RIGHT(p) == root)
+		else if (RIGHT(p) == result)
 			{ p->right.store(buildBalancedFromArray(a, 0, n));
 			  RIGHT(p)->parent.store(p); }
 		else{ p->left.store(buildBalancedFromArray(a, 0, n));
