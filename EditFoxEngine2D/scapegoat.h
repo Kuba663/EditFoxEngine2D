@@ -138,9 +138,9 @@ protected:
 			arr[i++] = ptr;
 			return storeInArray(RIGHT(ptr), arr, i);
 		};
-		std::shared_ptr<node> result;
-		int n = sizeOfSubtree(root);
-		auto p = root->parent.load();
+		std::shared_ptr<node> result = root;
+		int n = sizeOfSubtree(result);
+		auto p = result->parent.load();
 		std::shared_ptr<node>* arr = new std::shared_ptr<node>[n];
 		storeInArray(root, arr, 0);
 		if (!p) 
