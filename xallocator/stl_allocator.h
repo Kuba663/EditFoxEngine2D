@@ -38,34 +38,34 @@ public:
 	typedef T value_type;
 
 	/// Constructor
-	XALLOCATOR_API stl_allocator(){}
+	stl_allocator(){}
 
 	/// Destructor
-	XALLOCATOR_API ~stl_allocator(){}
+	~stl_allocator(){}
 
 	/// Copy constructor
-	template <class U> XALLOCATOR_API stl_allocator(const stl_allocator<U>&){}
+	template <class U> stl_allocator(const stl_allocator<U>&){}
 
 	template <class U>
-	struct XALLOCATOR_API rebind { typedef stl_allocator<U> other; };
+	struct rebind { typedef stl_allocator<U> other; };
 
 	/// Return reference address.
 	/// @return	Pointer to T memory.
-	pointer XALLOCATOR_API address(reference x) const {return &x;}
+	pointer address(reference x) const {return &x;}
 
 	/// Return reference address.
 	/// @return	Const pointer to T memory.
-	const_pointer XALLOCATOR_API address(const_reference x) const {return &x;}
+	const_pointer address(const_reference x) const {return &x;}
 
 	/// Get the maximum size of memory.
 	/// @return	Max memory size in bytes.
-	size_type XALLOCATOR_API max_size() const throw() {return size_t(-1) / sizeof(value_type);}
+	size_type max_size() const throw() {return size_t(-1) / sizeof(value_type);}
 
 	/// Allocates a fixed block of memory
 	/// @param[in] n - size of memory to allocate in bytes
 	/// @param[in] hint
 	/// @return	Pointer to the allocated memory.
-	pointer XALLOCATOR_API allocate(size_type n, stl_allocator<void>::const_pointer hint = 0)
+	pointer allocate(size_type n, stl_allocator<void>::const_pointer hint = 0)
 	{
 		return static_cast<pointer>(xmalloc(n*sizeof(T)));
 	}
@@ -73,7 +73,7 @@ public:
 	/// Deallocate a previously allocated fixed memory block.
 	/// @param[in] p - pointer to the memory block
 	/// @param[in] n - size of memory in bytes
-	void XALLOCATOR_API deallocate(pointer p, size_type n)
+	void deallocate(pointer p, size_type n)
 	{
 		xfree(p);
 	}
@@ -82,7 +82,7 @@ public:
 	/// @param[in] p - pointer to the memory where the instance is constructed
 	///		using placement new.
 	/// @param[in] val - instance of object to copy construct.
-	void XALLOCATOR_API construct(pointer p, const T& val)
+	void construct(pointer p, const T& val)
 	{
 		new(static_cast<void*>(p)) T(val);
 	}
@@ -90,7 +90,7 @@ public:
 	/// Create a new object instance using placement new. 
 	/// @param[in] p - pointer to the memory where the instance is constructed
 	///		using placement new.
-	void XALLOCATOR_API construct(pointer p)
+	void construct(pointer p)
 	{
 		new(static_cast<void*>(p)) T();
 	}
@@ -98,7 +98,7 @@ public:
 	/// Destroys an instance. Objects created with placement new must
 	///	explicitly call the destructor.
 	/// @param[in] p - pointer to object instance.
-	void XALLOCATOR_API destroy(pointer p)
+	void destroy(pointer p)
 	{
 		p->~T();
 	}
@@ -123,14 +123,14 @@ namespace std
 {
 	template <class _Tp1, class _Tp2>
 	inline stl_allocator<_Tp2>& STD_ALLOC_CDECL
-	XALLOCATOR_API __stl_alloc_rebind(stl_allocator<_Tp1>& __a, const _Tp2*)
+	__stl_alloc_rebind(stl_allocator<_Tp1>& __a, const _Tp2*)
 	{
 		return (stl_allocator<_Tp2>&)(__a);
 	}
 
 	template <class _Tp1, class _Tp2>
 	inline stl_allocator<_Tp2> STD_ALLOC_CDECL
-		XALLOCATOR_API __stl_alloc_create(const stl_allocator<_Tp1>&, const _Tp2*)
+	__stl_alloc_create(const stl_allocator<_Tp1>&, const _Tp2*)
 	{
 		return stl_allocator<_Tp2>();
 	}
