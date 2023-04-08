@@ -3,6 +3,7 @@
 #define LEFT(x) x->left.load()
 #define RIGHT(x) x->right.load()
 #include <memory>
+#include <Allocator.h>
 #include <stl_allocator.h>
 #include <atomic>
 #include <cmath>
@@ -159,5 +160,6 @@ protected:
 private:
 	std::atomic<std::shared_ptr<node>> root;
 	std::atomic_size_t _length;
+	DECLARE_ALLOCATOR
 };
 #endif
