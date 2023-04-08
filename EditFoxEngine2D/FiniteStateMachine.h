@@ -17,6 +17,7 @@ public:
 	void update();
 protected:
 	void setCurrentState(State* state);
+	XALLOCATOR
 };
 
 template<class S>
