@@ -5,3 +5,8 @@
 // Pliki nagłówkowe systemu Windows
 #include <windows.h>
 #endif
+#ifdef XALLOCATOR_EXPORTS
+#define XALLOCATOR_API __declspec(dllexport)
+#else
+#define XALLOCATOR_API __declspec(dllimport)
+#endif
