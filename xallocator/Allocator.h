@@ -6,18 +6,18 @@
 #include "framework.h"
 
 /// See http://www.codeproject.com/Articles/1083210/An-efficient-Cplusplus-fixed-block-memory-allocato
-class XALLOCATOR_API Allocator
+extern "C" { class XALLOCATOR_API Allocator
 {
 public:
     /// Constructor
     /// @param[in]  size - size of the fixed blocks
     /// @param[in]  objects - maximum number of object. If 0, new blocks are
-	///		created off the heap as necessary.
-	/// @param[in]	memory - pointer to a block of static memory for allocator or NULL 
-	///		to obtain memory from global heap. If not NULL, the objects argument 
-	///		defines the size of the memory block (size x objects = memory size in bytes).
-	///	@param[in]	name - optional allocator name string.
-    Allocator(size_t size, UINT objects=0, CHAR* memory = NULL, const CHAR* name=NULL);
+    ///		created off the heap as necessary.
+    /// @param[in]	memory - pointer to a block of static memory for allocator or NULL 
+    ///		to obtain memory from global heap. If not NULL, the objects argument 
+    ///		defines the size of the memory block (size x objects = memory size in bytes).
+    ///	@param[in]	name - optional allocator name string.
+    Allocator(size_t size, UINT objects = 0, CHAR* memory = NULL, const CHAR* name = NULL);
 
     /// Destructor
     ~Allocator();
@@ -54,7 +54,7 @@ public:
     /// Gets the total number of deallocations for this allocator instance.
     /// @return		The total number of deallocations.
     UINT GetDeallocations() { return m_deallocations; }
-	
+
 private:
     /// Push a memory block onto head of free-list.
     /// @param[in]  pMemory - block of memory to push onto free-list
@@ -69,12 +69,12 @@ private:
         Block* pNext;
     };
 
-	enum AllocatorMode { HEAP_BLOCKS, HEAP_POOL, STATIC_POOL };
+    enum AllocatorMode { HEAP_BLOCKS, HEAP_POOL, STATIC_POOL };
 
     const size_t m_blockSize;
     const size_t m_objectSize;
     const UINT m_maxObjects;
-	AllocatorMode m_allocatorMode;
+    AllocatorMode m_allocatorMode;
     Block* m_pHead;
     CHAR* m_pPool;
     UINT m_poolIndex;
@@ -84,7 +84,7 @@ private:
     UINT m_deallocations;
     const CHAR* m_name;
 };
-
+}
 // Template class to create external memory pool
 template <class T, UINT Objects>
 class AllocatorPool : public Allocator

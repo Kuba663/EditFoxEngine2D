@@ -8,7 +8,7 @@
 #include "Fault.h"
 
 template <typename T> class stl_allocator;
-template <> class XALLOCATOR_API stl_allocator<void>
+template <> class stl_allocator<void>
 {
 public:
     typedef void* pointer;
@@ -17,7 +17,7 @@ public:
     typedef void value_type;
 
     template <class U>
-        struct XALLOCATOR_API rebind { typedef stl_allocator<U> other; };
+        struct rebind { typedef stl_allocator<U> other; };
 };
 
 /// @brief stl_allocator is STL-compatible allocator used to provide fixed 
@@ -26,7 +26,7 @@ public:
 /// stl_allocator is custom allocator where xmalloc/xfree is used to obtain 
 /// and release memory. 
 template <typename T>
-class XALLOCATOR_API stl_allocator
+class stl_allocator
 {
 public:
 	typedef size_t size_type;
@@ -105,10 +105,10 @@ public:
 };
 
 template <typename T, typename U>
-inline bool XALLOCATOR_API operator==(const stl_allocator<T>&, const stl_allocator<U>){return true;}
+inline bool operator==(const stl_allocator<T>&, const stl_allocator<U>){return true;}
 
 template <typename T, typename U>
-inline bool XALLOCATOR_API operator!=(const stl_allocator<T>&, const stl_allocator<U>){return false;}
+inline bool operator!=(const stl_allocator<T>&, const stl_allocator<U>){return false;}
 
 // For VC6/STLPort 4-5-3 see /stl/_alloc.h, line 464
 // "If custom allocators are being used without member template classes support :

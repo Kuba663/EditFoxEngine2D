@@ -20,7 +20,7 @@
 /// will occur in the reverse order so xallocInitDestroy is called last. This way,
 /// any static user objects relying on xallocator will be destroyed first before 
 /// xalloc_destroy() is called. 
-class XALLOCATOR_API XallocInitDestroy
+extern "C" class XALLOCATOR_API XallocInitDestroy
 {
 public:
     XallocInitDestroy();
