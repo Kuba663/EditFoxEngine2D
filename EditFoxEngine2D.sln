@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xallocator", "xallocator\xallocator.vcxproj", "{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -29,6 +31,14 @@ Global
 		{0F1C486B-A8BC-4292-BC4F-5F9D4EA41C3D}.Release|x64.Build.0 = Release|x64
 		{0F1C486B-A8BC-4292-BC4F-5F9D4EA41C3D}.Release|x86.ActiveCfg = Release|Win32
 		{0F1C486B-A8BC-4292-BC4F-5F9D4EA41C3D}.Release|x86.Build.0 = Release|Win32
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Debug|x64.ActiveCfg = Debug|x64
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Debug|x64.Build.0 = Debug|x64
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Debug|x86.ActiveCfg = Debug|Win32
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Debug|x86.Build.0 = Debug|Win32
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Release|x64.ActiveCfg = Release|x64
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Release|x64.Build.0 = Release|x64
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Release|x86.ActiveCfg = Release|Win32
+		{C4FF7484-D92B-43F3-8E71-5FC97D351AB6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
