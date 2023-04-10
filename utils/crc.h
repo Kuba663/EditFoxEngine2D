@@ -12,13 +12,19 @@
 **  File: CRC_32.C
 */
 
+#ifdef _cplusplus
+extern "C" {
+#endif
+
 #define UPDC32(octet,crc) (crc_32_tab[((crc)\
      ^ ((BYTE)octet)) & 0xff] ^ ((crc) >> 8))
 
-DWORD UTILS_API updateCRC32(unsigned char ch, DWORD crc);
-Boolean_T UTILS_API crc32file(char* name, DWORD* crc, long* charcnt);
-DWORD UTILS_API crc32buf(char* buf, size_t len);
+    DWORD UTILS_API updateCRC32(unsigned char ch, DWORD crc);
+    Boolean_T UTILS_API crc32file(char* name, DWORD* crc, long* charcnt);
+    DWORD UTILS_API crc32buf(char* buf, size_t len);
 
-
+#ifdef _cplusplus
+}
+#endif
 
 #endif /* CRC__H */

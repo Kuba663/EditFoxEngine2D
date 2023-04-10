@@ -1,5 +1,6 @@
 #ifndef __EDITFOXENGINE_ID_H_
 #define __EDITFOXENGINE_ID_H_
+#define _cplusplus
 #include <crc.h>
 #include <random>
 #include <ctime>
@@ -10,6 +11,9 @@ namespace EditFoxEngine {
 		unsigned long long rgn;
 		efeid() = default;
 		explicit efeid(xstring category);
+		bool operator<(efeid other) const;
+		bool operator!=(efeid other) const;
+		bool operator==(efeid other) const;
 	};
 }
 template<>

@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <Allocator.h>
+#include <stl_allocator.h>
 #include <xlist.h>
 #include <xmap.h>
 #include <xqueue.h>
