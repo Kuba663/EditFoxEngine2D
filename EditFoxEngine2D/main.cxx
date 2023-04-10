@@ -4,17 +4,18 @@
 #include <xsstream.h>
 #include "scapegoat.h"
 #include "Entity.h"
+#include "SplashScreen.h"
 #define COMMA ,
 
 IMPLEMENT_ALLOCATOR(scapegoat<EditFoxEngine::efeid COMMA EditFoxEngine::ECS::Entity COMMA std::hash<EditFoxEngine::efeid> COMMA std::less<size_t> COMMA stl_allocator<EditFoxEngine::ECS::Entity>>, 0, NULL)
 
 char* entity_heap;
 Allocator* entity_allocator;
+std::unique_ptr<EditFoxEngine::Game> game;
 
 int main(int argc, const char** argv) {
 	xstringstream title;
 	int width, height, entityCount;
-	std::unique_ptr<EditFoxEngine::Game> game;
 	ArgumentParser parser;
 	parser.addArgument("-w", "--width", 1, false);
 	parser.addArgument("-h", "--height", 1, false);

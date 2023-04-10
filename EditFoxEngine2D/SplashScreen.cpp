@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "SplashScreen.h"
 
+extern std::unique_ptr<EditFoxEngine::Game> game;
+
 EditFoxEngine::States::SplashScreen::SplashScreen(FiniteStateMachine& fsm, xstring name)
 	: State(fsm,name)
 {
@@ -8,10 +10,10 @@ EditFoxEngine::States::SplashScreen::SplashScreen(FiniteStateMachine& fsm, xstri
 
 void EditFoxEngine::States::SplashScreen::enter()
 {
-	this->renderingSpace = new sf::RenderWindow(game.handle());
+	this->renderingSpace = new sf::RenderWindow(game->handle());
 	auto screenSize = this->renderingSpace->getSize();
 	this->logoSprite = new sf::Sprite();
-	this->efeWatermark = new sf::Text("Made with Edit Fox Engine", game.getFont("avrile-sans"),10);
+	this->efeWatermark = new sf::Text("Made with Edit Fox Engine", Game::getFont("avrile-sans"),10);
 	this->efeWatermark->setFillColor(sf::Color::White);
 	auto watermarkSize = this->efeWatermark->getLocalBounds();
 	this->efeWatermark->setOrigin(watermarkSize.width/2,watermarkSize.height/2);

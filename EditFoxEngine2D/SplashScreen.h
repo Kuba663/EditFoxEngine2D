@@ -2,13 +2,14 @@
 #include "State.h"
 #include "Game.h"
 #include <SFML/Graphics.hpp>
+extern int ::main(int argc, const char** argv);
 namespace EditFoxEngine {
     class Game;
     namespace States {
         class SplashScreen :
             public State
         {
-            const Game& game;
+            friend int ::main(int argc, const char** argv);
         public:
             explicit SplashScreen(FiniteStateMachine& fsm, xstring name);
             virtual void enter() override;

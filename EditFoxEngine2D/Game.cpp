@@ -8,6 +8,8 @@ EditFoxEngine::Game::Game()
 {
 	this->window = new sf::Window();
 	this->gameStateMachine = new FiniteStateMachine();
+	this->gameStateMachine->addState<EditFoxEngine::States::SplashScreen>("splash");
+	this->gameStateMachine->setCurrentState("splash");
 }
 
 EditFoxEngine::Game::~Game()
@@ -21,14 +23,14 @@ void EditFoxEngine::Game::initWindow(xstring name, int width, int height)
 	this->window->create(sf::VideoMode(width,height),std::string(name.c_str()));
 }
 
-sf::WindowHandle EditFoxEngine::Game::handle() const&
+sf::WindowHandle EditFoxEngine::Game::handle() const
 {
 	return this->window->getSystemHandle();
 }
 
-sf::Font& EditFoxEngine::Game::getFont(xstring fontName) const&
+sf::Font& EditFoxEngine::Game::getFont(xstring fontName)
 {
-	return this->fontRegistry[fontName];
+	return Game::fontRegistry[fontName];
 }
 
 void EditFoxEngine::Game::updateSFMLEvents()
