@@ -12,7 +12,7 @@ EditFoxEngine::Game::Game()
 	this->gameStateMachine = new FiniteStateMachine();
 #ifdef _DEBUG
 	sf::FileInputStream stream;
-	stream.open("../content/fonts/AvrileSans.ttf");
+	stream.open("./content/fonts/AvrileSans.ttf");
 	sf::Font f;
 	f.loadFromStream(stream);
 	Game::fontRegistry.insert("avrile-sans", f);

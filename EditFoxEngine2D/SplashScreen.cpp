@@ -21,7 +21,7 @@ void EditFoxEngine::States::SplashScreen::enter()
 #ifdef _DEBUG
 	sf::FileInputStream stream;
 	sf::Texture logo;
-	stream.open("../content/logo.png");
+	stream.open("./content/logo.png");
 	logo.loadFromStream(stream);
 	this->logoSprite->setTexture(logo,true);
 #else
