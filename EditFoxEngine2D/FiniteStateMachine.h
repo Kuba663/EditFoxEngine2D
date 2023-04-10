@@ -23,7 +23,7 @@ protected:
 template<class S>
 inline State& FiniteStateMachine::addState(xstring name)
 {
-	static_assert(!std::is_same<State, S>());
+	static_assert(!std::is_same<State, S>(),"Is not state!");
 	states[name] = std::make_unique<S>(*this, name);
 	return *states[name];
 }

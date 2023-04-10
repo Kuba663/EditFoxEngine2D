@@ -2,14 +2,26 @@
 
 #include "Game.h"
 
-IMPLEMENT_ALLOCATOR(EditFoxEngine::Game,1,NULL)
+IMPLEMENT_ALLOCATOR(EditFoxEngine::Game, 1, NULL)
+
+scapegoat<xstring, sf::Font> EditFoxEngine::Game::fontRegistry = scapegoat<xstring, sf::Font>();
 
 EditFoxEngine::Game::Game()
 {
 	this->window = new sf::Window();
 	this->gameStateMachine = new FiniteStateMachine();
+#ifdef _DEBUG
+	sf::FileInputStream stream;
+	stream.open("/content/fonts/AvrilleSans.ttf");
+	sf::Font f;
+	f.loadFromStream(stream);
+	Game::fontRegistry.insert("avrile-sans", f);
+#else
+	// TODO: LZMA2 archive loading implementation for Release
+#endif
 	this->gameStateMachine->addState<EditFoxEngine::States::SplashScreen>("splash");
 	this->gameStateMachine->setCurrentState("splash");
+	
 }
 
 EditFoxEngine::Game::~Game()
