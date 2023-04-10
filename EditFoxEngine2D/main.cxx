@@ -1,7 +1,7 @@
 #include <argparse.hpp>
 #include <memory>
 #include "Game.h"
-#include "xsstream.h"
+#include <xsstream.h>
 #include "scapegoat.h"
 #define COMMA ,
 
