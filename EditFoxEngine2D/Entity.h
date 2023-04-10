@@ -9,7 +9,6 @@ namespace EditFoxEngine {
 		class Entity
 		{
 			friend class ::scapegoat<EditFoxEngine::efeid, EditFoxEngine::ECS::Entity, std::hash<EditFoxEngine::efeid>, std::less<size_t>, stl_allocator<EditFoxEngine::ECS::Entity>>;
-			friend int ::main(int argc, const char** argv);
 			efeid id;
 		public:
 			Entity();
