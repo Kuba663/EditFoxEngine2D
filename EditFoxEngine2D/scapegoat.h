@@ -5,6 +5,7 @@
 #include <atomic>
 #include <cmath>
 #include <limits>
+#define COMMA ,
 namespace EditFoxEngine {
 	namespace ECS{
 			class Entity;
@@ -25,8 +26,8 @@ class scapegoat
 			this->right.store(nullptr);
 			this->parent.store(nullptr);
 		};
-		node(scapegoat& tree, _Kty key, _Ty value) {
-			this->tree = tree;
+		node(scapegoat& tree, _Kty key, _Ty value)
+		: tree(tree){
 			this->key = _Hash()(key);
 			this->value = std::allocator_traits<_Alloc>::allocate(this->allocator, 1);
 			std::allocator_traits<_Alloc>::construct(this->allocator, this->value, value);
@@ -55,7 +56,14 @@ class scapegoat
 		_Alloc allocator;
 	};
 public:
-	explicit scapegoat() = default;
+	explicit scapegoat() {
+		this->root.store(nullptr);
+		this->_length.store(0);
+	}
+	scapegoat(const scapegoat& s) {
+		this->root.exchange(s.root.load());
+		this->_length.exchange(s._length.load());
+	}
 	virtual ~scapegoat() {
 		delete root.load();
 	};
@@ -68,10 +76,10 @@ public:
 		node* currentNode = this->root.load();
 		while (currentNode != nullptr)
 			{ potentialParent = currentNode;
-			  if (_Comp(n->key, currentNode->key)) currentNode = LEFT(currentNode);
+			if (_Comp{}(n->key, currentNode->key)) currentNode = LEFT(currentNode);
 			  else currentNode = RIGHT(currentNode); }
 		if (potentialParent != nullptr) n->parent.store(potentialParent);
-		if (_Comp(n->key, n->parent.load()->key)) n->parent.load()->left.store(n);
+		if (_Comp{}(n->key, n->parent.load()->key)) n->parent.load()->left.store(n);
 		else n->parent.load()->right.store(n);
 		this->_length++;
 		node* scapegoat = this->findScapegoat(n);
@@ -91,7 +99,7 @@ public:
 		auto n = this->root.load();
 		while (n->key != key) {
 			parent = n;
-			if (_Comp(n->key, key))
+			if (_Comp{}(n->key, key))
 				{ n = RIGHT(n);
 				  isLeftChild = false; }
 			else
@@ -110,12 +118,12 @@ public:
 		this->root.store(this->rebalance(this->root.load()));
 	}
 	_Ty& operator[](_Kty at) const {
-		return *search(this->root.load())->value;
+		return *search(at,this->root.load())->value;
 	}
 protected:
-	node* search(_Kty at, node* root) const {
-		if (!root || root->key == at) return root;
-		return _Comp(RIGHT(root), at) ? search(RIGHT(root)) : search(LEFT(root));
+	node* search(_Kty at, node* start) const {
+		if (start == nullptr || start->key == std::hash<_Kty>()(at)) return start;
+		return _Comp{}(RIGHT(start)->key, std::hash<_Kty>()(at)) ? search(at,RIGHT(start)) : search(at,LEFT(start));
 	}
 	node* findScapegoat(node* n) {
 		node* tmp;
@@ -178,6 +186,8 @@ private:
 	std::atomic_size_t _length;
 	DECLARE_ALLOCATOR
 };
+template<typename _Kty, typename _Ty, typename _Hash, typename _Comp , typename _Alloc>
+IMPLEMENT_ALLOCATOR(scapegoat<_Kty COMMA _Ty COMMA _Hash COMMA _Comp COMMA _Alloc>,0,NULL)
 #pragma region specializations
 #include "efeid.h"
 #include "Entity.h"
@@ -192,7 +202,14 @@ class scapegoat<EditFoxEngine::efeid, EditFoxEngine::ECS::Entity, std::hash<Edit
 		~node();
 	};
 public:
-	explicit scapegoat() = default;
+	explicit scapegoat() {
+		this->root.store(nullptr);
+		this->_length.store(0);
+	}
+	scapegoat(const scapegoat& s) {
+		this->root.exchange(s.root.load());
+		this->_length.exchange(s._length.load());
+	}
 	virtual ~scapegoat() {
 		delete root.load();
 	};
