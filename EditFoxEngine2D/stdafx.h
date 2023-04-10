@@ -9,3 +9,10 @@
 #include <xsstream.h>
 #include <xstring.h>
 #include "efeid.h"
+
+#pragma region hash specializations
+template<>
+struct std::hash<xstring> {
+	std::size_t operator()(xstring const& str) const noexcept;
+};
+#pragma endregion
