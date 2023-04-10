@@ -2,6 +2,10 @@
 #include <memory>
 #include "Game.h"
 #include "xsstream.h"
+#include "scapegoat.h"
+#define COMMA ,
+
+IMPLEMENT_ALLOCATOR(scapegoat<EditFoxEngine::efeid COMMA EditFoxEngine::ECS::Entity COMMA std::hash<EditFoxEngine::efeid> COMMA std::less<size_t> COMMA stl_allocator<EditFoxEngine::ECS::Entity>>, 0, NULL)
 
 int main(int argc, const char** argv) {
 	xstringstream title;
