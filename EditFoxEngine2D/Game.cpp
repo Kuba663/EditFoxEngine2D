@@ -20,8 +20,6 @@ EditFoxEngine::Game::Game()
 	// TODO: LZMA2 archive loading implementation for Release
 #endif
 	this->gameStateMachine->addState<EditFoxEngine::States::SplashScreen>("splash");
-	this->gameStateMachine->setCurrentState("splash");
-	
 }
 
 EditFoxEngine::Game::~Game()
@@ -33,6 +31,8 @@ EditFoxEngine::Game::~Game()
 void EditFoxEngine::Game::initWindow(xstring name, int width, int height)
 {
 	this->window->create(sf::VideoMode(width,height),std::string(name.c_str()));
+	
+	this->gameStateMachine->setCurrentState("splash");
 }
 
 sf::WindowHandle EditFoxEngine::Game::handle() const
