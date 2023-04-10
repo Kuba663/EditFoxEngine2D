@@ -16,7 +16,8 @@ namespace EditFoxEngine {
 			~Entity();
 			void update(float deltaTime);
 			void render(std::shared_ptr<sf::RenderTarget> target);
-			DECLARE_ALLOCATOR
+			void* operator new(size_t size);
+			void operator delete(void* pObject);
 		};
 	}
 }

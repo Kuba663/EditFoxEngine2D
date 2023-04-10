@@ -2,6 +2,8 @@
 
 #include "Game.h"
 
+IMPLEMENT_ALLOCATOR(EditFoxEngine::Game,1,NULL)
+
 EditFoxEngine::Game::Game()
 {
 	this->window = new sf::Window();

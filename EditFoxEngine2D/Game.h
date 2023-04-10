@@ -18,6 +18,7 @@ namespace EditFoxEngine {
 		void updateSFMLEvents();
 		void update();
 		void run();
+		DECLARE_ALLOCATOR
 	};
 }
 #endif
