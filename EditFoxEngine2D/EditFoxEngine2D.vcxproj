@@ -111,7 +111,9 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /s /e /h /i /y "$(SolutionDir)testcontent" "$(SolutionDir)Debug\content"
-&lt;inne opcje&gt;</Command>
+xcopy /y /d "$(SolutionDir)SFML\32\bin\sfml-graphics-d-2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)SFML\32\bin\sfml-system-d-2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)SFML\32\bin\sfml-window-d-2.dll" "$(OutDir)"</Command>
       <Message>Kopiowanie biblioek dynamicznych</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -154,7 +156,9 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /s /e /h /i /y "$(SolutionDir)testcontent" "$(SolutionDir)Debug\content"
-&lt;inne opcje&gt;</Command>
+xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-graphics-d-2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-system-d-2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Kopiowanie bibliotek dynamicznych</Message>
