@@ -3,12 +3,15 @@
 #include "Game.h"
 #include <SFML/Graphics.hpp>
 namespace EditFoxEngine {
+    class Game;
     namespace States {
         class SplashScreen :
             public State
         {
             friend class EditFoxEngine::Game;
             static const Game& game;
+        public:
+            explicit SplashScreen(FiniteStateMachine& fsm, xstring name);
             virtual void enter() override;
             virtual void update() override;
             virtual void exit() override;

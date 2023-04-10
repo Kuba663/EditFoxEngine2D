@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "SplashScreen.h"
 
+EditFoxEngine::States::SplashScreen::SplashScreen(FiniteStateMachine& fsm, xstring name)
+	: State(fsm,name)
+{
+}
+
 void EditFoxEngine::States::SplashScreen::enter()
 {
 	this->renderingSpace = new sf::RenderWindow(game.handle());
