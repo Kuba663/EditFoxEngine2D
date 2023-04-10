@@ -10,7 +10,7 @@ EditFoxEngine::States::SplashScreen::SplashScreen(FiniteStateMachine& fsm, xstri
 
 void EditFoxEngine::States::SplashScreen::enter()
 {
-	this->renderingSpace = new sf::RenderWindow(game->handle());
+	this->renderingSpace = game->handle();
 	auto screenSize = this->renderingSpace->getSize();
 	this->logoSprite = new sf::Sprite();
 	this->efeWatermark = new sf::Text("Made with Edit Fox Engine", Game::getFont("avrile-sans"),10);
@@ -21,7 +21,7 @@ void EditFoxEngine::States::SplashScreen::enter()
 #ifdef _DEBUG
 	sf::FileInputStream stream;
 	sf::Texture logo;
-	stream.open("/content/logo.png");
+	stream.open("../content/logo.png");
 	logo.loadFromStream(stream);
 	this->logoSprite->setTexture(logo,true);
 #else
@@ -34,10 +34,8 @@ void EditFoxEngine::States::SplashScreen::enter()
 
 void EditFoxEngine::States::SplashScreen::update()
 {
-	this->renderingSpace->clear();
 	this->renderingSpace->draw(*this->efeWatermark);
 	this->renderingSpace->draw(*this->logoSprite);
-	this->renderingSpace->display();
 }
 
 void EditFoxEngine::States::SplashScreen::exit()

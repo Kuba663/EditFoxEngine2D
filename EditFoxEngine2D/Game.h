@@ -9,7 +9,7 @@ namespace EditFoxEngine {
 	class Game
 	{
 	private:
-		sf::Window* window;
+		sf::RenderWindow* window;
 		sf::Event ev;
 		FiniteStateMachine* gameStateMachine;
 		static scapegoat<xstring, sf::Font> fontRegistry;
@@ -17,7 +17,7 @@ namespace EditFoxEngine {
 		Game();
 		~Game();
 		void initWindow(xstring name,int width, int height);
-		sf::WindowHandle handle() const;
+		sf::RenderTarget* handle() const;
 		static sf::Font& getFont(xstring fontName);
 		void updateSFMLEvents();
 		void update();

@@ -8,11 +8,11 @@ scapegoat<xstring, sf::Font> EditFoxEngine::Game::fontRegistry = scapegoat<xstri
 
 EditFoxEngine::Game::Game()
 {
-	this->window = new sf::Window();
+	this->window = new sf::RenderWindow();
 	this->gameStateMachine = new FiniteStateMachine();
 #ifdef _DEBUG
 	sf::FileInputStream stream;
-	stream.open("/content/fonts/AvrilleSans.ttf");
+	stream.open("../content/fonts/AvrileSans.ttf");
 	sf::Font f;
 	f.loadFromStream(stream);
 	Game::fontRegistry.insert("avrile-sans", f);
@@ -35,9 +35,9 @@ void EditFoxEngine::Game::initWindow(xstring name, int width, int height)
 	this->gameStateMachine->setCurrentState("splash");
 }
 
-sf::WindowHandle EditFoxEngine::Game::handle() const
+sf::RenderTarget* EditFoxEngine::Game::handle() const
 {
-	return this->window->getSystemHandle();
+	return this->window;
 }
 
 sf::Font& EditFoxEngine::Game::getFont(xstring fontName)
@@ -55,6 +55,7 @@ void EditFoxEngine::Game::updateSFMLEvents()
 
 void EditFoxEngine::Game::update()
 {
+	window->clear();
 	this->gameStateMachine->update();
 	window->display();
 }

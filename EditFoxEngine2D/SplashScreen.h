@@ -16,7 +16,7 @@ namespace EditFoxEngine {
             virtual void update() override;
             virtual void exit() override;
         private:
-            sf::RenderWindow* renderingSpace;
+            sf::RenderTarget* renderingSpace;
             sf::Sprite* logoSprite;
             sf::Text* efeWatermark;
         };
