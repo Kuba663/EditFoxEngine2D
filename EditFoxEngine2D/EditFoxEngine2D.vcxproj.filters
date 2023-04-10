@@ -25,6 +25,12 @@
     <Filter Include="Pliki źródłowe\ECS">
       <UniqueIdentifier>{91b7b798-237b-4194-a829-04db44a0a1f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\States">
+      <UniqueIdentifier>{f0eba63e-0f17-407e-870e-1edfe069c021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\States">
+      <UniqueIdentifier>{58a8d64c-611a-4276-93a2-b9995a69418f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -47,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="efeid.h">
       <Filter>Pliki nagłówkowe\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScreen.h">
+      <Filter>Pliki nagłówkowe\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="scapegoat.cpp">
       <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScreen.cpp">
+      <Filter>Pliki źródłowe\States</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

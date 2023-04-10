@@ -188,6 +188,7 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="scapegoat.h" />
+    <ClInclude Include="SplashScreen.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
@@ -203,6 +204,7 @@ xcopy /y /d "$(SolutionDir)SFML\64\bin\sfml-window-d-2.dll" "$(OutDir)"</Command
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="scapegoat.cpp" />
+    <ClCompile Include="SplashScreen.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>

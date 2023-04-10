@@ -21,9 +21,14 @@ void EditFoxEngine::Game::initWindow(xstring name, int width, int height)
 	this->window->create(sf::VideoMode(width,height),std::string(name.c_str()));
 }
 
-sf::WindowHandle EditFoxEngine::Game::handle() const&&
+sf::WindowHandle EditFoxEngine::Game::handle() const&
 {
 	return this->window->getSystemHandle();
+}
+
+sf::Font& EditFoxEngine::Game::getFont(xstring fontName) const&
+{
+	return this->fontRegistry[fontName];
 }
 
 void EditFoxEngine::Game::updateSFMLEvents()
