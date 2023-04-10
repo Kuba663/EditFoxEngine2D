@@ -3,9 +3,15 @@
 #include "Game.h"
 #include <xsstream.h>
 #include "scapegoat.h"
+#include "Entity.h"
 #define COMMA ,
 
 IMPLEMENT_ALLOCATOR(scapegoat<EditFoxEngine::efeid COMMA EditFoxEngine::ECS::Entity COMMA std::hash<EditFoxEngine::efeid> COMMA std::less<size_t> COMMA stl_allocator<EditFoxEngine::ECS::Entity>>, 0, NULL)
+
+size_t maxEntityCount = 1024;
+char* entity_heap = (char*)xmalloc((maxEntityCount+1) * sizeof(EditFoxEngine::ECS::Entity));
+
+Allocator EditFoxEngine::ECS::Entity::_allocator(sizeof(EditFoxEngine::ECS::Entity), maxEntityCount, entity_heap, "Entity");
 
 int main(int argc, const char** argv) {
 	xstringstream title;
@@ -46,7 +52,9 @@ int main(int argc, const char** argv) {
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
+		if (entity_heap != NULL) xfree(entity_heap);
 		return -1;
 	}
+	if (entity_heap != NULL) xfree(entity_heap);
 	return 0;
 }

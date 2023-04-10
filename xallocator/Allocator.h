@@ -55,6 +55,7 @@ public:
     /// @return		The total number of deallocations.
     UINT GetDeallocations() { return m_deallocations; }
 
+
 private:
     /// Push a memory block onto head of free-list.
     /// @param[in]  pMemory - block of memory to push onto free-list
