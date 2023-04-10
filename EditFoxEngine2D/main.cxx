@@ -65,7 +65,7 @@ int main(int argc, const char** argv) {
 		if (entity_heap != NULL) xfree(entity_heap);
 		return -1;
 	}
-	delete game.get();
+	delete game.release();
 	delete entity_allocator;
 	if (entity_heap != NULL) xfree(entity_heap);
 	return 0;
