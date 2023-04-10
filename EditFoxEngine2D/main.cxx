@@ -61,9 +61,11 @@ int main(int argc, const char** argv) {
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
+		delete entity_allocator;
 		if (entity_heap != NULL) xfree(entity_heap);
 		return -1;
 	}
+	delete entity_allocator;
 	if (entity_heap != NULL) xfree(entity_heap);
 	return 0;
 }
