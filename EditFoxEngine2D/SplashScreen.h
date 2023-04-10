@@ -8,8 +8,7 @@ namespace EditFoxEngine {
         class SplashScreen :
             public State
         {
-            friend class EditFoxEngine::Game;
-            static const Game& game;
+            const Game& game;
         public:
             explicit SplashScreen(FiniteStateMachine& fsm, xstring name);
             virtual void enter() override;
