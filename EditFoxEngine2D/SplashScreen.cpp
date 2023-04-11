@@ -13,7 +13,8 @@ void EditFoxEngine::States::SplashScreen::enter()
 	this->renderingSpace = game->handle();
 	auto screenSize = this->renderingSpace->getSize();
 	this->logoSprite = new sf::Sprite();
-	this->efeWatermark = new sf::Text("Made with Edit Fox Engine", Game::getFont("avrile-sans"),10);
+	auto font = Game::getFont("avrile-sans");
+	this->efeWatermark = new sf::Text("Made with Edit Fox Engine", font,10);
 	this->efeWatermark->setFillColor(sf::Color::White);
 	auto watermarkSize = this->efeWatermark->getLocalBounds();
 	this->efeWatermark->setOrigin(watermarkSize.width/2,watermarkSize.height/2);

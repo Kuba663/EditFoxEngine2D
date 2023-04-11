@@ -12,7 +12,7 @@ namespace EditFoxEngine {
 		sf::RenderWindow* window;
 		sf::Event ev;
 		FiniteStateMachine* gameStateMachine;
-		static scapegoat<xstring, sf::Font> fontRegistry;
+		static scapegoat<xstring, sf::Font, std::hash<xstring>, std::less<size_t>, std::allocator<sf::Font>> fontRegistry;
 	public:
 		Game();
 		~Game();
@@ -22,7 +22,7 @@ namespace EditFoxEngine {
 		void updateSFMLEvents();
 		void update();
 		void run();
-		DECLARE_ALLOCATOR
+//		DECLARE_ALLOCATOR
 	};
 }
 #endif

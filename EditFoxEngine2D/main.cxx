@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <argparse.hpp>
 #include <memory>
 #include "Game.h"
@@ -7,7 +8,7 @@
 #include "SplashScreen.h"
 #define COMMA ,
 
-IMPLEMENT_ALLOCATOR(scapegoat<EditFoxEngine::efeid COMMA EditFoxEngine::ECS::Entity COMMA std::hash<EditFoxEngine::efeid> COMMA std::less<size_t> COMMA stl_allocator<EditFoxEngine::ECS::Entity>>, 0, NULL)
+//IMPLEMENT_ALLOCATOR(scapegoat<EditFoxEngine::efeid COMMA EditFoxEngine::ECS::Entity COMMA std::hash<EditFoxEngine::efeid> COMMA std::less<size_t> COMMA stl_allocator<EditFoxEngine::ECS::Entity>>, 0, NULL)
 
 char* entity_heap;
 Allocator* entity_allocator;

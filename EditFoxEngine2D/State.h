@@ -12,6 +12,6 @@ public:
 protected:
 	FiniteStateMachine& fsm;
 	xstring name;
-	XALLOCATOR
+	//XALLOCATOR
 };
 

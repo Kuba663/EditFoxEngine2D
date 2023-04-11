@@ -2,9 +2,9 @@
 
 #include "Game.h"
 
-IMPLEMENT_ALLOCATOR(EditFoxEngine::Game, 1, NULL)
+//IMPLEMENT_ALLOCATOR(EditFoxEngine::Game, 1, NULL)
 
-scapegoat<xstring, sf::Font> EditFoxEngine::Game::fontRegistry = scapegoat<xstring, sf::Font>();
+scapegoat<xstring, sf::Font, std::hash<xstring>, std::less<size_t>, std::allocator<sf::Font>> EditFoxEngine::Game::fontRegistry = scapegoat<xstring, sf::Font,std::hash<xstring>,std::less<size_t>,std::allocator<sf::Font>>();
 
 EditFoxEngine::Game::Game()
 {
