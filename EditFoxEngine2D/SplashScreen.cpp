@@ -22,10 +22,7 @@ void EditFoxEngine::States::SplashScreen::enter()
 	this->efeWatermark.setOrigin(watermarkSize.width/2,watermarkSize.height/2);
 	this->efeWatermark.setPosition(screenSize.x / 2, screenSize.y - (watermarkSize.height / 2));
 #ifdef _DEBUG
-	sf::FileInputStream stream;
-	sf::Texture logo;
-	stream.open("./content/logo.png");
-	logo.loadFromStream(stream);
+	logo.loadFromFile("./content/logo.png");
 	this->logoSprite.setTexture(logo,true);
 #else
 	// TODO: LZMA2 archive loading implementation for Release
