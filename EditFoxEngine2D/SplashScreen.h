@@ -16,9 +16,12 @@ namespace EditFoxEngine {
             virtual void update() override;
             virtual void exit() override;
         private:
+#ifdef _DEBUG
+            sf::Texture logo;
+#endif
             sf::RenderTarget* renderingSpace;
-            sf::Sprite* logoSprite;
-            sf::Text* efeWatermark;
+            sf::Sprite logoSprite;
+            sf::Text efeWatermark;
         };
     }
 }

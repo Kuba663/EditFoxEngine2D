@@ -2,20 +2,24 @@
 
 #include "Game.h"
 
-IMPLEMENT_ALLOCATOR(EditFoxEngine::Game, 1, NULL)
+//IMPLEMENT_ALLOCATOR(EditFoxEngine::Game, 1, NULL)
 
-scapegoat<xstring, sf::Font> EditFoxEngine::Game::fontRegistry = scapegoat<xstring, sf::Font>();
+scapegoat<xstring, std::pair<sf::Font*, sf::FileInputStream*>> EditFoxEngine::Game::fontRegistry = scapegoat<xstring, std::pair<sf::Font*, sf::FileInputStream*>>();
 
 EditFoxEngine::Game::Game()
 {
 	this->window = new sf::RenderWindow();
 	this->gameStateMachine = new FiniteStateMachine();
 #ifdef _DEBUG
-	sf::FileInputStream stream;
-	stream.open("../content/fonts/AvrileSans.ttf");
-	sf::Font f;
-	f.loadFromStream(stream);
-	Game::fontRegistry.insert("avrile-sans", f);
+	sf::FileInputStream* stream = new sf::FileInputStream();
+	stream->open("./content/fonts/AvrileSans.ttf");
+	sf::Font* f = new sf::Font();
+	const bool loadAvrille = f->loadFromStream(*stream);
+	assert(loadAvrille);
+	auto pair = std::pair<sf::Font*, sf::FileInputStream*>();
+	pair.first = f;
+	pair.second = stream;
+	Game::fontRegistry.insert("avrile-sans", pair);
 #else
 	// TODO: LZMA2 archive loading implementation for Release
 #endif
@@ -42,7 +46,7 @@ sf::RenderTarget* EditFoxEngine::Game::handle() const
 
 sf::Font& EditFoxEngine::Game::getFont(xstring fontName)
 {
-	return Game::fontRegistry[fontName];
+	return *Game::fontRegistry[fontName].first;
 }
 
 void EditFoxEngine::Game::updateSFMLEvents()

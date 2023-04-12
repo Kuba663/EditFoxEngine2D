@@ -15,6 +15,7 @@ template<typename _Kty, typename _Ty, typename _Hash = std::hash<_Kty>, typename
 class scapegoat
 {
 	struct node {
+		using type_allocator = typename std::allocator_traits<_Alloc>::template rebind_alloc<_Ty>;
 		size_t key;
 		_Ty* value;
 		std::atomic<node*> parent, left, right;
@@ -29,15 +30,15 @@ class scapegoat
 		node(scapegoat& tree, _Kty key, _Ty value)
 		: tree(tree){
 			this->key = _Hash()(key);
-			this->value = std::allocator_traits<_Alloc>::allocate(this->allocator, 1);
-			std::allocator_traits<_Alloc>::construct(this->allocator, this->value, value);
+			this->value = this->allocator.allocate(1);
+			this->allocator.construct(this->value, value);
 			this->left.store(nullptr);
 			this->right.store(nullptr);
 			this->parent.store(nullptr);
 		}
 		~node() {
-			std::allocator_traits<_Alloc>::destroy(this->allocator, this->value);
-			std::allocator_traits<_Alloc>::deallocate(this->allocator, this->value, 1);
+			this->allocator.destroy( this->value);
+			this->allocator.deallocate( this->value, 1);
 			delete left.load();
 			delete right.load();
 			left.store(NULL);
@@ -45,15 +46,15 @@ class scapegoat
 		}
 		node& operator=(node&& n) {
 			if (*this != n) {
-				std::allocator_traits<_Alloc>::destroy(this->allocator, this->value);
-				std::allocator_traits<_Alloc>::construct(this->allocator, this->value, value);
+				this->allocator.destroy(this->value);
+				this->allocator.construct( this->value, value);
 				this->key = n.key;
 				n.key = std::numeric_limits<size_t>().max();
 				this->tree->remove(std::numeric_limits<size_t>().max());
 			}
 			return *this;
 		}
-		_Alloc allocator;
+		type_allocator allocator;
 	};
 public:
 	explicit scapegoat() {
@@ -184,10 +185,10 @@ protected:
 private:
 	std::atomic<node*> root;
 	std::atomic_size_t _length;
-	DECLARE_ALLOCATOR
+	//DECLARE_ALLOCATOR
 };
-template<typename _Kty, typename _Ty, typename _Hash, typename _Comp , typename _Alloc>
-IMPLEMENT_ALLOCATOR(scapegoat<_Kty COMMA _Ty COMMA _Hash COMMA _Comp COMMA _Alloc>,0,NULL)
+//template<typename _Kty, typename _Ty, typename _Hash, typename _Comp , typename _Alloc>
+//IMPLEMENT_ALLOCATOR(scapegoat<_Kty COMMA _Ty COMMA _Hash COMMA _Comp COMMA _Alloc>,0,NULL)
 #pragma region specializations
 #include "efeid.h"
 #include "Entity.h"
@@ -251,7 +252,7 @@ protected:
 private:
 	std::atomic<node*> root;
 	std::atomic_size_t _length;
-	DECLARE_ALLOCATOR
+	//DECLARE_ALLOCATOR
 };
 #pragma endregion
 
