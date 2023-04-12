@@ -12,7 +12,7 @@ namespace EditFoxEngine {
 		sf::RenderWindow* window;
 		sf::Event ev;
 		FiniteStateMachine* gameStateMachine;
-		static scapegoat<xstring, sf::Font, std::hash<xstring>, std::less<size_t>, std::allocator<sf::Font>> fontRegistry;
+		static scapegoat<xstring, std::pair<sf::Font*,sf::FileInputStream*>> fontRegistry;
 	public:
 		Game();
 		~Game();
