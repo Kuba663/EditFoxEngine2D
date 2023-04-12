@@ -24,6 +24,7 @@ EditFoxEngine::Game::Game()
 	// TODO: LZMA2 archive loading implementation for Release
 #endif
 	this->gameStateMachine->addState<EditFoxEngine::States::SplashScreen>("splash");
+	this->deltaClock.restart();
 }
 
 EditFoxEngine::Game::~Game()
@@ -49,6 +50,11 @@ sf::Font& EditFoxEngine::Game::getFont(xstring fontName)
 	return *Game::fontRegistry[fontName].first;
 }
 
+float EditFoxEngine::Game::deltaTime() const
+{
+	return this->deltaClock.getElapsedTime().asSeconds();
+}
+
 void EditFoxEngine::Game::updateSFMLEvents()
 {
 	while (this->window->pollEvent(this->ev)) {
@@ -62,6 +68,7 @@ void EditFoxEngine::Game::update()
 	window->clear();
 	this->gameStateMachine->update();
 	window->display();
+	this->deltaClock.restart();
 }
 
 void EditFoxEngine::Game::run()

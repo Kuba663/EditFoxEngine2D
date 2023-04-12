@@ -21,6 +21,9 @@ void EditFoxEngine::States::SplashScreen::enter()
 	auto watermarkSize = this->efeWatermark.getLocalBounds();
 	this->efeWatermark.setOrigin(watermarkSize.width/2,watermarkSize.height/2);
 	this->efeWatermark.setPosition(screenSize.x / 2, screenSize.y - (watermarkSize.height / 2));
+	auto defColour = sf::Color::White;
+	defColour.a = 0;
+	this->logoSprite.setColor(defColour);
 #ifdef _DEBUG
 	logo.loadFromFile("./content/logo.png");
 	this->logoSprite.setTexture(logo,true);
@@ -34,8 +37,13 @@ void EditFoxEngine::States::SplashScreen::enter()
 
 void EditFoxEngine::States::SplashScreen::update()
 {
+	auto dt = game->deltaTime();
 	this->renderingSpace->draw(this->efeWatermark);
+	auto colour = this->logoSprite.getColor();
+	colour.a = floor(sin(this->splashAnimation)*0xff);
+	this->logoSprite.setColor(colour);
 	this->renderingSpace->draw(this->logoSprite);
+	this->splashAnimation += dt;
 }
 
 void EditFoxEngine::States::SplashScreen::exit()

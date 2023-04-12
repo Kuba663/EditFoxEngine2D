@@ -22,6 +22,7 @@ namespace EditFoxEngine {
             sf::RenderTarget* renderingSpace;
             sf::Sprite logoSprite;
             sf::Text efeWatermark;
+            float splashAnimation = 0;
         };
     }
 }
